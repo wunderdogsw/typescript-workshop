@@ -4,8 +4,48 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cross-env NODE_ENV=production BUILD_TYPE=client webpack",
+    "build:server": "cross-env NODE_ENV=production BUILD_TYPE=server babel src --out-dir dist/server --ignore \"src/client/**/*\" --extensions \".ts,.tsx\"",
+    "watch:client": "cross-env NODE_ENV=development BUILD_TYPE=client webpack",
+    "watch:server": "cross-env NODE_ENV=development BUILD_TYPE=server babel-watch ./src/server/server.ts --extensions \".ts,.tsx\"",
+    "watch:typecheck": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/express": "^4.17.1",
+    "@types/node": "^12.7.4",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-redux": "^7.1.2",
+    "@types/webpack": "^4.39.1",
+    "@types/webpack-dev-middleware": "^2.0.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-watch": "^7.0.0",
+    "cross-env": "^5.2.1",
+    "html-webpack-plugin": "^3.2.0",
+    "typescript": "^3.6.2",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-middleware": "^3.7.1",
+    "webpack-plugin-serve": "^0.12.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "immer": "^4.0.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "redux-starter-kit": "^0.7.0",
+    "redux-thunk": "^2.3.0"
+  }
 }

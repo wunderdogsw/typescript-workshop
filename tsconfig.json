@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    // No null/undefined errors or accidentally using the any-type.
+    "strict": true,
+
+    // Babel will handle compilation to older JS versions.
+    "target": "esnext",
+
+    "lib": ["dom", "esnext"],
+
+    "moduleResolution": "node",
+    "jsx": "react",
+
+    // Babel and Webpack will produce the output
+    "noEmit": true,
+
+    // Import non-ES modules as default imports.
+    "esModuleInterop": true,
+
+    // Allows importing from src/ with import '~/foo'.
+    // baseUrl is set to '.' and not 'src' to make TS auto import
+    // function prefer the '~' style as it is shorter.
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "outDir": "./dist/"
+  },
+  // Include everything to make `npm run watch:typecheck` check all the files, including tests.
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
+}
