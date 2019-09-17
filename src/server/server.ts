@@ -1,5 +1,4 @@
 import express from 'express'
-import { User, name } from '~/shared/User'
 import { UsersResponse } from '~/shared/responses'
 
 const port = process.env.NODE_ENV === 'development' ? 3001 : 3000
